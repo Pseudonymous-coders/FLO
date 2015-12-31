@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<style>
+  #body {
+        outline:white solid 0.5px;
+        padding: 40px 75px;
+        border-radius: 3px;
+        color:rgba(200,200,200,0.7);
+        font-weight: bold;
+        border: none;
+        margin: 0;
+        background: rgba(0,0,0,0.4);
+        font-family: helvetica, arial, sans-serif;
+        font-size: 45pt;
+        position:absolute;
+        TOP:25px;
+        RIGHT:100px;
+        LEFT: 100px;
+        BOTTOM: 50px;
+  }
+  
+    #list {
+        outline:white solid 0.5px;
+        padding: 40px 75px;
+        border-radius: 3px;
+        color:rgba(200,200,200,0.7);
+        font-weight: bold;
+        border: none;
+        margin: 0;
+        background: rgba(0,0,0,0.4);
+        font-family: helvetica, arial, sans-serif;
+        font-size: 20pt;
+        position:absolute;
+        TOP:150px;
+        RIGHT:120px;
+        LEFT: 120px;
+        BOTTOM: 60px;
+  }
+ 
+   #id {
+        outline:white solid 0.5px;
+        padding: 15px 150px;
+        border-radius: 3px;
+        color:rgba(200,200,200,0.7);
+        font-weight: bold;
+        border: none;
+        margin: 0;
+        background: rgba(0,0,0,0.4);
+        font-family: helvetica, arial, sans-serif;
+        font-size: 24pt;
+        position:absolute;
+        TOP:45px;
+        LEFT: 125px;
+  }
+  
+  .addremove {
+        outline:white solid 0.5px;
+        padding: 10px 10px;
+        border-radius: 3px;
+        color:rgba(200,200,200,0.9);
+        font-weight: bold;
+        border: none;
+        margin: 0;
+        background: rgba(0,0,0,0.7);
+        font-family: helvetica, arial, sans-serif;
+        font-size: 20pt;
+        position:absolute;
+        TOP:500px;
+  }
+
+  
+  #layouthome {
+        outline:white solid 0.5px;
+        padding: 20px 100px;
+        border-radius: 3px;
+        color:rgba(200,200,200,0.7);/*0.7*/
+        font-weight: bold;
+        border: none;
+        margin: 0;
+        background: rgba(0,0,0,0.4);
+        font-family: helvetica, arial, sans-serif;
+        font-size: 32pt;
+        position:absolute;
+        TOP:45px;
+        RIGHT: 150px;
+  }
+  #layouthome:hover {
+        background: rgba(0,0,0,0.4);
+        color:rgba(140,140,140,0.8);
+        
+  
+      
+</style>
+<body background="images/background.jpg">
+  <div id="body">
+  </div>
+  <div id="id">
+    ID
+  </div>
+  <button id="layouthome">
+    Home
+  </button>
+  <ul id="list">
+  </ul>
+  <button class="addremove" id="add" style="LEFT: 130px; TOP: 500px;">Add</button>
+  <input class="addremove" id="addinput" type="text" style="LEFT: 200px;width:225px"><br>
+  
+  <button class="addremove" id="remove" style="RIGHT: 130px; TOP: 500px;">Remove</button>
+    <input class="addremove" id="removeinput" type="text" style="RIGHT: 250px;width:225px;">
+  
+  <script src="students.js"></script>
+</body>
+</html>

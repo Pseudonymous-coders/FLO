@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+  <html>
+    <style>
+      
+      #add {
+        outline:white solid 0.5px;
+        padding: 20px 20px;
+        border-radius: 3px;
+        color:rgba(200,200,200,0.7);
+        font-weight: bold;
+        border: none;
+        margin: 0;
+        background: rgba(0,0,0,0.4);
+        font-family: helvetica, arial, sans-serif;
+        font-size: 32pt;
+        position:absolute;
+        TOP:250px;
+        LEFT: 25px;
+        width: 80%;
+  }
+      
+      #remove {
+        outline:white solid 0.5px;
+        padding: 20px 20px;
+        border-radius: 3px;
+        color:rgba(200,200,200,0.7);
+        font-weight: bold;
+        border: none;
+        margin: 0;
+        background: rgba(0,0,0,0.4);
+        font-family: helvetica, arial, sans-serif;
+        font-size: 32pt;
+        position:absolute;
+        TOP:350px;
+        LEFT: 25px;
+        width:80%;
+  }
+  
+      #top {
+        outline:white solid 0.5px;
+        padding: 7px 20px;
+        border-radius: 3px;
+        color:rgba(200,200,200,0.7);
+        font-weight: bold;
+        border: none;
+        margin: 0;
+        background: rgba(0,0,0,0.8);
+        font-family: helvetica, arial, sans-serif;
+        font-size: 35pt;
+        position:absolute;
+        TOP:40px;
+        LEFT: 60px;
+  }
+      
+      select {
+        outline:white solid 0.5px;
+        padding: 10px 120px;
+        border-radius: 3px;
+        color:rgba(200,200,200,0.9);
+        font-weight: bold;
+        border: none;
+        margin: 0;
+        background: rgba(0,0,0,0.7);
+        font-family: helvetica, arial, sans-serif;
+        font-size: 32pt;
+        position:absolute;
+        TOP:360px;
+        RIGHT: 230px;
+  }
+      
+      select:hover {
+        background: rgba(0,0,0,0.8);
+        color:rgba(200,200,200,0.5);
+  }
+        
+    #textadd {
+        outline:white solid 0.5px;
+        padding: 10px 10px;
+        border-radius: 3px;
+        color:rgba(200,200,200,0.9);
+        font-weight: bold;
+        border: none;
+        margin: 0;
+        background: rgba(0,0,0,0.7);
+        font-family: helvetica, arial, sans-serif;
+        font-size: 32pt;
+        position:absolute;
+        TOP:10px;
+        RIGHT: 5px;
+        width: 50%;
+  }
+    
+    #submit {
+        outline:white solid 0.5px;
+        padding: 10px 50px;
+        border-radius: 3px;
+        color:rgba(200,200,200,0.9);
+        font-weight: bold;
+        border: none;
+        margin: 0;
+        background: rgba(0,0,0,0.7);
+        font-family: helvetica, arial, sans-serif;
+        font-size: 32pt;
+        position:absolute;
+        TOP:450px;
+        LEFT: 25px;
+  }
+    
+    #submit:hover {
+      background: rgba(0,0,0,0.8);
+      color:rgba(200,200,200,0.5);
+  }
+  
+   #home {
+      outline:white solid 0.5px;
+        padding: 20px 100px;
+        border-radius: 3px;
+        color:rgba(200,200,200,0.9);
+        font-weight: bold;
+        border: none;
+        margin: 0;
+        background: rgba(0,0,0,0.8);
+        font-family: helvetica, arial, sans-serif;
+        font-size: 32pt;
+        position:absolute;
+        BOTTOM:25px;
+        RIGHT: 25px;
+        
+  }
+  #home:hover {
+        background: rgba(0,0,0,0.8);
+        color:rgba(200,200,200,0.5);
+  }
+  #home:link {
+    text-decoration: none;
+  }
+  
+  
+  
+    </style>
+    <body background="images/background.jpg">
+      <p id="top" style="text-align: center">
+        Here you can add and remove skills reviews. <br>But be warned: <br>If you delete a skills review, all data inside will be lost
+      </p>
+      <div id="add">
+        Add a skills review here: 
+        <input type="text" id="textadd">
+      </div>
+      <div id="remove">
+        Select a skills review to remove:
+      </div>
+      <select id="removeList">
+        <option value="select">Select</option>
+      </select>
+      <button id="submit">Submit</button>
+      <button id="home">Home</button>
+      <script src="skillsreviews.js"></script>
+    </body>
+  </html>
