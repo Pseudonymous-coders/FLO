@@ -94,7 +94,7 @@ window.M2X.devices.streams(window.deviceId, function(streamList)
 var home = document.getElementById('home');
 home.addEventListener('click', function()
 {
-  document.body.innerHTML = "";
+  document.innerHTML = "";
   document.write(window.index);
 });
 
