@@ -11,38 +11,47 @@ console.log(window.gStudentId);
 //console.log(window.gStudentId);
 require(['m2x.js'], function(result)
 {
-  console.log(result);
-  if(typeof M2X !== 'undefined')
+  if(window.M2X)
   {
-    console.log("Why isn't it being found?");
+    console.log("I already have a M2X!");
+    console.log(window.M2X);
   }
   else
   {
-    console.log(typeof M2X + "In require")
+    console.log("I am creating a M2X!");
+    console.log(result);
+    if(typeof M2X !== 'undefined')
+    {
+      console.log("Why isn't it being found?");
+    }
+    else
+    {
+      console.log(typeof M2X + "In require")
+    }
+  
+  
+    var apiKey = "e4e45f5f3c7351dda32c361fb3e36266";
+    var deviceId = "855ca95fcaffd8add08e27e8cce59b0d";
+    
+    var m2x = result;
+    console.log(m2x);
+    var m2x = new m2x(apiKey);
+    
+    window.M2X = m2x;
+    window.apiKey = apiKey;
+    window.deviceId = deviceId;
   }
-
-
-  var apiKey = "e4e45f5f3c7351dda32c361fb3e36266";
-  var deviceId = "855ca95fcaffd8add08e27e8cce59b0d";
-  
-  var m2x = result;
-  console.log(m2x);
-  var m2x = new m2x(apiKey);
-  
-  window.M2X = m2x;
-  window.apiKey = apiKey;
-  window.deviceId = deviceId;
-  m2x.status(function(result)
+  window.M2X.status(function(result)
   {
     console.log("result is " + result);
   });
   
-  m2x.devices.view(deviceId, function(device) 
+  window.M2X.devices.view(window.deviceId, function(device) 
   {
       console.log(device.streams.url);
   }, function(error) { console.log(error);});
   
-  m2x.devices.streams(deviceId, function(streamlist)
+  window.M2X.devices.streams(window.deviceId, function(streamlist)
   {
     console.log(streamlist);
   });
