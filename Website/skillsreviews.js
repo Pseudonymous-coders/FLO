@@ -4,6 +4,7 @@ home.addEventListener('click', function()
 {
   console.log("FDJSLK:");
   document.body.innerHTML = "";
+  document.clear();
   document.write(window.index);
 });
 
