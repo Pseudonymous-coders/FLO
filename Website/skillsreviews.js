@@ -10,11 +10,16 @@ home.addEventListener('click', function()
 
 var removeList = document.getElementById('removeList');
 console.log(removeList);
+var loading = document.createElement('option');
+loading.setAttribute('value', 'Loading');
+loading.innerText = 'Loading . . .';
+removeList.appendChild(loading);
 window.M2X.devices.streams(window.deviceId, function(streamList)
 {
   var skillNumber = 0;
   console.log(streamList);
   console.log("# of streams: " + streamList.streams.length);
+  removeList.removeChild(loading);
   for(var i = 0; i < streamList.streams.length; i++)
   {
     if(streamList.streams[i].name !== "students")
@@ -43,7 +48,7 @@ submit.addEventListener('click', function()
       console.log(result);
     }, function(error){console.log("updateStream error: " + error);})
   }
-  if(removeList.options[removeList.selectedIndex].value !== "select")
+  if(removeList.options[removeList.selectedIndex].value !== "Loading")
   {
     console.log("I need to remove!");
     window.M2X.devices.deleteStream(window.deviceId, removeList.options[removeList.selectedIndex].value, function(result)
