@@ -1,5 +1,5 @@
 console.log(window.gStudentId);
-console.log("LATEST UPDATE: 3.0");
+console.log("LATEST UPDATE: 3.1");
 var studentId = document.getElementById('id');
 studentId.innerText = gStudentId;
 
@@ -7,7 +7,6 @@ var m2x = window.M2X;
 var deviceId= window.deviceId;
 var apiKey = window.apiKey;
 
-//m2x = new m2x(window.apiKey);
 
 m2x.status(function(result)
 {
@@ -33,13 +32,15 @@ window.M2X.devices.streams(window.deviceId, function(streamList)
   console.log("streamList values " + streamList.streams.length);
   for(var i = 0; i < streamList.streams.length; i++)
   {
-    if(streamList.streams[i].name != "students" || streamList.streams[i].name != "log")
+    if(streamList.streams[i].name == "students")
+      console.log("Students stream reached. Abort now");
+    if((streamList.streams[i].name != "students") && (streamList.streams[i].name != "log"))
     {
       console.log(streamList.streams[i].name);
       console.log("THIS SHOULD RUN ONCE THIS SHOULD RUN ONCE");
       skillId.push(streamList.streams[i].name);
       skillNames.push(streamList.streams[i].display_name);
-      console.log(streamList.streams[i].name);
+      //console.log(streamList.streams[i].name);
       window.M2X.devices.streamValues(window.deviceId, streamList.streams[i].name, function(result)
       {
         console.log("Before if: ");
@@ -59,12 +60,13 @@ window.M2X.devices.streams(window.deviceId, function(streamList)
               console.log("i is: " + skillNumber);
               var skillName = document.createElement('ul');
               console.log("SKILLNAMES i is: " + skillNames[skillNumber]);
-              skillName.innerText = "Miter Saw";
+              console.log(skillNames);
+              skillName.innerText = skillNames[j];
               skills.appendChild(skillName);
               
               var removeSkill = document.createElement('option');
-              removeSkill.value = skillId[skillNumber];
-              removeSkill.innerText = skillNames[skillNumber];
+              removeSkill.value = skillId[j];
+              removeSkill.innerText = skillNames[j];
               remove.appendChild(removeSkill);
             }
             else
