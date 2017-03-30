@@ -1,0 +1,11 @@
+{
+	"window": {
+		"width": 1920,
+		"height": 750,
+		"x_location": 0,
+		"y_location": 0,
+		"icon_name": "logo",
+		"resizable": true,
+		"refresh_millis": 80
+	}
+}
