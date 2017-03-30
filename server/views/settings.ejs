@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+    <title>Slumber | Profile</title>
+    <% include partials/head %>
+    <script type="text/javascript" src="/js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <% include partials/header %>
+    </div>
+    <div class="row">
+      <div class="normFont text-center">
+        <h1>Hello <%= user.local.fname %></h1>
+      </div>
+      <div class="page-header text-center">
+        <a href="/logout" class="btn btn-flat btn-sm">Logout</a>
+        <a href="/api/clearData" class="btn btn-flat btn-sm">Clear night data</a>
+        <div class="well">
+          <h5>Be careful</h5>
+          <form action="/api/deleteUser" method="DELETE">
+            <input type="checkbox" id="isConfirmed" name="confirm" />
+            <label for="isConfirmed" class="black-text">Are you sure?</label>
+            <input type='submit' class="btn btn-flat btn-sm" id="deleteUser" value="Delete User" disabled="disabled"/>
+          </form>
+          <script>
+            $('#isConfirmed').click(function(){
+              if ($(this).is(':checked')){
+                $('#deleteUser').removeAttr('disabled');
+              } else {
+                $('#deleteUser').attr('disabled', 'disabled');
+              }
+            });
+          </script>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="well normText">
+            <h4 class="normFont"><span class="fa fa-user"></span> Your Info</h4>
+            <p class="cap">
+              <strong class="noCap">ID</strong>: <%= user._id %><br />
+              <strong>First name</strong>: <%= user.local.fname %> <br />
+              <strong>Last name</strong>: <%= user.local.lname %> <br />
+              <strong>Age</strong>: <%= user.local.age %><br />
+              <strong>Gender</strong>: <% if(user.local.gender=='M'){%>Male<%}else{%>Female<%}%><br />
+              <strong>Email</strong>: <%= user.local.email %><br />
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <canvas id="lastNight" height="500px"></canvas>
+    </div>
+    <script type="text/javascript" src="/js/materialize.min.js"></script>
+    <% include partials/footer %>
+  </div>
+</body>
+</html>

@@ -1,0 +1,1 @@
+odule.exports = (app, passport)=>{}

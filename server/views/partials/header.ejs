@@ -1,0 +1,13 @@
+<nav>
+  <div class="nav-wrapper">
+    <a href="/" style="padding-left: 20px"class="brand-logo">Slumber</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <% if (user) { %>
+        <li><a href="/profile">My Profile</a></li>
+        <li><a href="/logout">Logout</a></li>
+      <% } else {%>
+        <li><a class="flow-text"href="/login">Login</a></li>
+      <% } %>
+    </ul>
+  </div>
+</nav>
