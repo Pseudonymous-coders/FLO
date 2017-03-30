@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Slumber | Night</title>
+    <% include partials/head %>
+
+    <!--Import materialize.css-->
+    <script type="text/javascript" src="/js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      try{
+        google.charts.load('current', {'packages':['line']});
+        google.charts.setOnLoadCallback(drawChart);
+      } catch (err){
+        console.log(err);
+      }
+      function lastNight() {
+        var xmlReq = new XMLHttpRequest();
+        xmlReq.open("GET", "https://eli-server.ddns.net/api/user_data/0-9999999999999999999999999", false);
+        xmlReq.send(null);
+        var sleepData = JSON.parse(xmlReq.responseText).slice(0);
+        var sleepArr = [];
+        var firstTime = sleepData[0].time,
+            lastTemp = 0,
+            lastHum = 0,
+            lastAccel = 0,
+            lastBatt = 0;
+        sleepData.forEach((item)=>{
+          var sleepTime = item.time - firstTime,
+              sleepTemp = item.temp,
+              sleepHum = item.hum,
+              sleepAccel = item.accel,
+              sleepBatt = (parseInt(item.vbatt)-350)*1.25;
+          if (!sleepBatt){
+            sleepBatt = lastBatt;
+          }
+          if (sleepTemp != lastTemp){
+            sleepArr.push([sleepTime, sleepAccel, sleepHum, sleepTemp, sleepBatt]);
+          }
+          if (sleepHum != lastHum){
+            sleepArr.push([sleepTime, sleepAccel, sleepHum, sleepTemp, sleepBatt]);
+          }
+          if (sleepAccel != lastAccel) {
+            sleepArr.push([sleepTime, sleepAccel, sleepHum, sleepTemp, sleepBatt])
+          }
+          if (sleepBatt != lastBatt){
+            sleepArr.push([sleepTime, sleepAccel, sleepHum, sleepTemp, sleepBatt])
+          }
+          lastTemp = sleepTemp;
+          lastHum = sleepHum;
+          lastAccel = sleepAccel;
+          lastBatt = sleepBatt;
+        })
+        return sleepArr
+      }
+
+
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('number', 'Time');
+        data.addColumn('number', 'Accel');
+        data.addColumn('number', 'Humidity');
+        data.addColumn('number', 'Temp');
+        data.addColumn('number', 'Batt');
+
+        data.addRows(lastNight());
+
+
+        var options = {
+          width: '100%',
+          height: '100%',
+          legend: {position: 'bottom'},
+          colors: [
+            '#FFD54F', //accel
+            '#03A9F4', //hum
+            '#FF3D00', //temp
+            '#4CAF50', //batt
+          ],
+        };
+
+        var chart = new google.charts.Line(document.getElementById('lastNight'));
+
+        chart.draw(data, options);
+      }
+    </script>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+  <body>
+    <% include partials/header %>
+    <br />
+    <div class="lastNightGraph">
+      <div id="lastNight"></div>
+    </div>
+    <div class="row recoms">
+      <div class="col s12 m3">
+        <div class="card-panel blue-grey darken-1 recom">
+          <div class="white-text">
+            <span class="card-title">Temperature</span>
+            <p id="tempRecom">
+              It was x degrees in your room last night, a little hot there.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col s12 m3">
+        <div class="card-panel blue-grey darken-1 recom">
+          <div class="white-text">
+            <span class="card-title">Humidity</span>
+            <p id="humidityRecom">
+              It was kind of humid in your room last night, a was a window open?
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col s12 m3">
+        <div class="card-panel blue-grey darken-1 recom">
+          <div class="white-text">
+            <span class="card-title">Movement</span>
+            <p id="accelRecom">
+              You tossed and turned quite a bit last night, that could be related to the high temperature and humidity.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col s12 m3">
+        <div class="card-panel blue-grey darken-1 recom">
+          <div class="white-text">
+            <span class="card-title">Light and Noise</span>
+            <p id="lightNoiseRecom">
+              Your TV was left on last night, causing light and noise polution in your room.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+  </body>
+</html>

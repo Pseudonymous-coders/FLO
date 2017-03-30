@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+    <title>Slumber | Login</title>
+    <% include partials/head %>
+</head>
+<body class="loginPage">
+  <div class="container-fluid">
+    <div class="row">
+      <% include partials/header %>
+    </div>
+    <div class="row loginContainer">
+      <div class="col s4 offset-s4 loginCard well">
+        <h1>Login</h1>
+
+        <!-- show any messages that come back with authentication -->
+        <% if (message.length > 0) { %>
+          <div class="alert alert-danger"><%= message %></div>
+        <% } %>
+
+        <!-- LOGIN FORM -->
+        <form action="/login" method="post">
+          <div class="form-group">
+            <input type="text" placeholder="Email/Username" class="form-control" autocomplete="off" onblur="this.value=removeSpaces(this.value);" name="email">
+            <input type="password" placeholder="Password" class="form-control" autocomplete="off" name="password">
+          </div>
+
+          <div class="row">
+            <button type="submit" class="btn btn-flat col s4 offset-s4">Login</button>
+          </div>
+        </form>
+        <div class="row">
+          <p>Need an account? <a href="/signup">Signup</a></p>
+          <p>Or go <a href="/">home</a>.</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <% include partials/footer %>
+    </div>
+  </div>
+  <script language="javascript" type="text/javascript">
+    function removeSpaces(string) {
+      return string.split(' ').join('');
+    }
+  </script>
+</body>
+</html>

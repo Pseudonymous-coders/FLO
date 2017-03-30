@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Slumber | Night</title>
+    <% include partials/head %>
+
+    <!--Import materialize.css-->
+    <script type="text/javascript" src="/js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="/js/moment.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <% include partials/header %>
+      <div class="row">
+        <canvas id="lastNight" height="500px"></canvas>
+      </div>
+      <div class="row recoms">
+        <div class="col s12 m3">
+          <div class="card-panel blue-grey darken-1 recom">
+            <div class="white-text">
+              <span class="card-title">Temperature</span>
+              <p id="tempRecom">
+                It was x degrees in your room last night, a little hot there.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m3">
+          <div class="card-panel blue-grey darken-1 recom">
+            <div class="white-text">
+              <span class="card-title">Humidity</span>
+              <p id="humidityRecom">
+                It was kind of humid in your room last night, a was a window open?
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m3">
+          <div class="card-panel blue-grey darken-1 recom">
+            <div class="white-text">
+              <span class="card-title">Movement</span>
+              <p id="accelRecom">
+                You tossed and turned quite a bit last night, that could be related to the high temperature and humidity.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m3">
+          <div class="card-panel blue-grey darken-1 recom">
+            <div class="white-text">
+              <span class="card-title">Light and Noise</span>
+              <p id="lightNoiseRecom">
+                Your TV was left on last night, causing light and noise polution in your room.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+      <% include partials/footer %>
+    </div>
+    <script src="/js/custom/chart.js"></script>
+  </body>
+</html>
