@@ -2,6 +2,7 @@ module.exports = (app, passport)=>{
 
   const webMiddleware = require('./middleware/webMiddleware');
   const apiMiddleware = require('./middleware/apiMiddleware');
+  const sqlite = require('sqlite3');
 
   app.use(webMiddleware.setLoginStatus, (req,res,next)=>{
     res.locals = {
@@ -34,13 +35,20 @@ module.exports = (app, passport)=>{
     failureRedirect: "/signup",
     failureFlash: true
   }), (req,res)=>{
-    // dataDb.run(`CREATE TABLE user_${req.user._id}(time TIMESTAMP default (strftime('%s', 'now')), accel SMALLINT, temp SMALLINT, hum SMALLINT, vbatt SMALLINT)`);
-    // homeDb.run(`CREATE TABLE user_${req.user._id}(type VARCHAR NOT NULL, name TEXT, id CHAR(8) NOT NULL, status BOOLEAN NOT NULL, extra TEXT)`);
     res.redirect('/profile');
   });
 
   app.get('/profile', webMiddleware.loginRedirect, (req,res)=>{
     res.render('profile.ejs', {user: req.user});
+  });
+
+  app.get('/add', webMiddleware.loginRedirect, (req,res)=>{
+    // THIS NEEDS WORK
+
+    // let db = new sqlite.Database('students.db');
+    // db.each('SELECT lname, fname, id WHERE ');
+    // db.close()
+    // res.render('add.ejs', {user: req.user, students: })
   });
 
   app.get('/logout', (req,res)=>{

@@ -2,15 +2,13 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt-nodejs');
 
 // Schema for user storage in MongoDB
-var userSchema = mongoose.Schema({
+let userSchema = mongoose.Schema({
   local: {
     fname: String,
     lname: String,
     username: String,
     email: String,
-    password: String,
-    age: Number,
-    gender: String
+    password: String
   },
   // facebook: {
   //   id: String,

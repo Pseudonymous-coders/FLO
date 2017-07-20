@@ -1,6 +1,6 @@
 module.exports = {
   'secret': "criwasactuallynotfirst",
-  'url': "mongodb://pseudonymous:Criwasfirst1@ds145138.mlab.com:45138/slumberusers",
+  'url': "mongodb://pseudonymous:safe-shop-pass@ds011321.mlab.com:11321/safe-shop",
   'options':{
     server: {socketOptions: {keepAlive: 300000, connectTimeoutMS: 30000}},
     replset: { socketOptions: {keepAlive: 300000, connectTimeoutMS: 30000}}

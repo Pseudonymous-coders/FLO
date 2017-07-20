@@ -42,6 +42,7 @@ module.exports = (passport)=>{
                   if (err){
                     throw err;
                   }
+                  req.user = newUser;
                   return done(null, newUser);
                 });
               }
